@@ -64,7 +64,7 @@ a{
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-
+  
 }
 
 .hero {
@@ -140,7 +140,7 @@ a{
   position: relative;
   width: min(88vw, 600px);
   max-height: 45vh;
-  aspect-ratio: 6 / 4;
+  aspect-ratio: 6 / 3;
   margin: 0 auto;
   border-radius: 20px;
   overflow: visible;
@@ -169,7 +169,7 @@ a{
   left: 50%;
   width: 100%;
   height: 100%;
-  transform: translateX(-45%) scale(2.5) translateY(20%);
+  transform: translateX(-45%) scale(3.0) translateY(20%);
   object-fit: contain;
   object-position: 50% 18%;
   animation: bob 3.3s ease-in-out infinite;
@@ -278,6 +278,7 @@ a{
 .controls {
   position: relative;
   z-index: 3;
+  max-height: 70vh;
 }
 
 .controls-header p {
@@ -325,7 +326,7 @@ a{
 }
 
 .icon {
-  font-size: 48px;
+  font-size: min(6vh,48px);
   transition: transform 0.18s ease;
 }
 
@@ -403,6 +404,7 @@ a{
   text-align: center;
   font-size: 9px;
   color: var(--muted);
+  z-index: 4;
 }
 
 .actions {
@@ -447,7 +449,7 @@ a{
 }
 
 .vs-overlay {
-  position: fixed;
+  position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
@@ -455,13 +457,12 @@ a{
   font-size: clamp(80px, 16vw, 200px);
   font-weight: 900;
   color: rgba(255, 255, 255, 0.95);
-  text-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.38),
-    0 0 2px rgba(0, 0, 0, 0.55);
+
   background: rgba(0, 0, 0, 0.82);
   opacity: 0;
   transition: opacity 0.2s ease;
   z-index: 10;
+  overflow: hidden;
 }
 
 .vs-overlay.is-active {
@@ -542,12 +543,13 @@ a{
   .character-card {
     padding: 10px;
   }
+  .controls {
+    max-height: 60vh;
+  }
   .layout {
     gap: 10px;
   }
 }
-
-
 
 @media (prefers-reduced-motion: reduce) {
   * {

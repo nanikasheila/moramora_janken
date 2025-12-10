@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moramora Janken</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=M+PLUS+Rounded+1c:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="vs-overlay" id="vs-overlay">VS</div>
+  <div class="page">
+    
+    <header class="hero">
+      <div class="eyebrow">Moramora mini game</div>
+      <h1>モラモラじゃんけん！</h1>
+    </header>
+
+    <main class="layout">
+      <section class="character-card">
+        <div class="frame" id="character-frame">
+          <img src="assets/base.png" alt="ベースイラスト" class="layer base" id="base-layer">
+          <img src="assets/usa.png" alt="マスコット" class="layer mascot" id="mascot-layer" loading="lazy">
+          <img src="assets/expression_01.png" alt="表情" class="layer expression" id="expression-layer" loading="lazy">
+          <img src="assets/Scissors.png" alt="手" class="layer hand is-hidden" id="hand-layer" loading="lazy">
+        </div>
+        <div class="announcer">
+          <div class="status-pill" id="status-pill">シャッフル中</div>
+          <div class="announcer-body">
+            <div class="speech">
+              <p id="result-text">「じゃーんけーん…ぽん！」好きなタイミングであなたの手を選んで！</p>
+            </div>
+            <div class="npc-hand-emoji" id="npc-hand-emoji" aria-label="モラモラの手">✊</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="controls">
+        <div class="hand-buttons" role="group" aria-label="あなたの手">
+          <button class="hand-btn" type="button" data-hand="rock">
+            <span class="icon">✊</span>
+            <span class="label"></span>
+          </button>
+          <button class="hand-btn" type="button" data-hand="scissors">
+            <span class="icon">✌️</span>
+            <span class="label"></span>
+          </button>
+          <button class="hand-btn" type="button" data-hand="paper">
+            <span class="icon">🖐️</span>
+            <span class="label"></span>
+          </button>
+        </div>
+
+        <div class="result-bar" id="result-bar">
+          <div class="you">
+            あなた：<strong id="user-hand-label">未選択</strong>
+          </div>
+          <div class="vs">VS</div>
+          <div class="mora">
+            モラモラはとこちゃん：<strong id="final-hand-label">???</strong>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="secondary" id="restart-btn" type="button">もう一度あそぶ</button>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p>Created : <a href="https://x.com/nanika_sheila">@nanika_sheila</a> / Character Rights <a href="https://x.com/MolaToko">@MolaToko</a></p>
+    </footer>
+  </div>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
