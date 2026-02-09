@@ -22,7 +22,7 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: "M PLUS Rounded 1c", "Fredoka", "Noto Sans JP", sans-serif;
-  background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+  background: linear-gradient(135deg, #eaf6ff 0%, #fff1e6 50%, #e5fff7 100%);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
@@ -33,23 +33,36 @@ body::before {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(140% 120% at 18% 12%, rgba(255, 255, 255, 0.16), transparent 60%),
-    radial-gradient(120% 110% at 82% 8%, rgba(26, 183, 163, 0.16), transparent 65%),
-    radial-gradient(135% 125% at 12% 78%, rgba(243, 110, 139, 0.14), transparent 65%),
-    conic-gradient(from 120deg at 50% 50%, rgba(255, 255, 255, 0.22), rgba(19, 32, 54, 0.08), rgba(255, 255, 255, 0.15), rgba(26, 183, 163, 0.12), rgba(255, 255, 255, 0.22));
+    radial-gradient(ellipse 800px 600px at 10% 20%, rgba(243, 110, 139, 0.4), transparent 40%),
+    radial-gradient(ellipse 700px 650px at 85% 15%, rgba(26, 183, 163, 0.35), transparent 45%),
+    radial-gradient(ellipse 750px 700px at 50% 50%, rgba(255, 200, 150, 0.3), transparent 50%),
+    radial-gradient(ellipse 650px 550px at 15% 85%, rgba(26, 183, 163, 0.4), transparent 50%),
+    radial-gradient(ellipse 700px 600px at 80% 80%, rgba(243, 110, 139, 0.3), transparent 45%),
+    radial-gradient(ellipse 600px 700px at 70% 30%, rgba(255, 180, 200, 0.35), transparent 50%),
+    radial-gradient(ellipse 750px 650px at 30% 60%, rgba(150, 220, 200, 0.3), transparent 45%),
+    radial-gradient(ellipse 700px 600px at 60% 70%, rgba(200, 180, 255, 0.25), transparent 50%);
   pointer-events: none;
   z-index: -1;
-  background-position:
-    0% 30%,
-    20% 60%,
-    80% 40%,
-    50% 50%;
+  background-blend-mode: lighten;
   background-size:
-    140% 140%,
+    120% 120%,
     130% 130%,
-    150% 150%,
-    140% 140%;
-  animation: flow-bg 18s ease-in-out infinite alternate;
+    140% 140%,
+    110% 110%,
+    125% 125%,
+    115% 115%,
+    135% 135%,
+    120% 120%;
+  background-position:
+    0% 0%,
+    100% 100%,
+    50% 50%,
+    10% 90%,
+    90% 20%,
+    40% 30%,
+    20% 70%,
+    80% 60%;
+  animation: marble-flow 18s ease-in-out infinite;
 }
 
 a{
@@ -522,30 +535,61 @@ a{
   100% { top: 3%; left: 50%; }
 }
 
-@keyframes flow-bg {
+@keyframes marble-flow {
   0% {
     background-position:
-      0% 30%,
-      20% 60%,
-      80% 40%,
-      50% 50%;
-    filter: hue-rotate(0deg) saturate(1);
+      0% 0%,
+      100% 100%,
+      50% 50%,
+      10% 90%,
+      90% 20%,
+      40% 30%,
+      20% 70%,
+      80% 60%;
+  }
+  25% {
+    background-position:
+      50% 30%,
+      40% 50%,
+      80% 30%,
+      70% 60%,
+      20% 40%,
+      90% 80%,
+      60% 20%,
+      30% 85%;
   }
   50% {
     background-position:
-      60% 0%,
-      0% 80%,
+      100% 100%,
+      0% 0%,
+      30% 70%,
+      90% 10%,
+      10% 80%,
+      50% 50%,
+      85% 35%,
+      25% 25%;
+  }
+  75% {
+    background-position:
+      40% 60%,
+      80% 40%,
+      10% 90%,
       30% 30%,
-      55% 45%;
-    filter: hue-rotate(20deg) saturate(1.1);
+      70% 70%,
+      20% 80%,
+      45% 50%,
+      75% 40%;
   }
   100% {
     background-position:
-      20% 100%,
-      100% 20%,
-      10% 70%,
-      45% 55%;
-    filter: hue-rotate(-10deg) saturate(1.05);
+      0% 0%,
+      100% 100%,
+      50% 50%,
+      10% 90%,
+      90% 20%,
+      40% 30%,
+      20% 70%,
+      80% 60%;
   }
 }
 
