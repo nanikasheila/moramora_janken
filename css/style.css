@@ -452,7 +452,7 @@ a{
 }
 
 .vs-overlay {
-  position: absolute;
+  position: fixed;
   inset: 0;
   display: grid;
   place-items: center;

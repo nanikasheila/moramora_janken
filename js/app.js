@@ -15,6 +15,11 @@
   const vsOverlay = document.getElementById("vs-overlay");
   const npcHandEmoji = document.getElementById("npc-hand-emoji");
 
+  // DOM要素が存在しない場合の安全性チェック
+  if (!expressionLayer || !handLayer || !statusPill || !resultText || !resultBar) {
+    console.error("必須のDOM要素が見つかりません。HTMLの構造を確認してください。");
+  }
+
   const hands = ["rock", "scissors", "paper"];
   const handLabels = { rock: "グー", scissors: "チョキ", paper: "パー" };
   const handEmojis = { rock: "✊", scissors: "✌️", paper: "🖐️" };
@@ -48,7 +53,6 @@
   let currentHand = "rock";
   let pendingNpcHand = null;
   let isLocked = false;
-  let selectedHand = null;
 
   const pick = (list) => list[Math.floor(Math.random() * list.length)];
   const pickDifferent = (list, prev) => {
@@ -81,7 +85,6 @@
   };
 
   const highlightUserHand = (hand) => {
-    selectedHand = hand;
     handButtons.forEach((btn) => {
       const isTarget = btn.dataset.hand === hand;
       btn.classList.toggle("is-selected", isTarget);
@@ -136,7 +139,6 @@
     hideVsOverlay();
     pendingNpcHand = null;
     isLocked = false;
-    selectedHand = null;
     resultBar.classList.remove("is-win", "is-lose", "is-draw");
     handButtons.forEach((btn) => btn.classList.remove("is-win", "is-lose", "is-draw"));
     resultText.textContent = baseMessage;
