@@ -12,10 +12,33 @@
 - 「もう一度あそぶ」でシャッフルを再開し、手ボタンの結果色もリセットされます。
 - マスコット（`assets/usa.png`）はキャラクターと同位置・サイズで別レイヤーに配置し、上下左右に非同期で揺れます。
 
-## ファイルとアセット
+## プロジェクト構成
 
-- 主要ファイル: `index.html`, `css/style.css`, `js/app.js`, `js/config.js`
-- 画像: `assets/base.png`（必須）、`assets/expression_*.png`（表情差分）、`assets/Scissors.png`（チョキ）, `assets/Paper.png`（パー）, `assets/usa.png`（マスコット）
+```text
+moramora_janken/
+├── index.html              … エントリーポイント
+├── css/
+│   ├── style.css           … ベーススタイル・レイアウト・コンポーネント
+│   ├── animations.css      … アニメーション定義（bob, shake, marble-flow 等）
+│   └── responsive.css      … レスポンシブ対応・アクセシビリティ
+├── js/
+│   ├── config.js           … ゲーム設定（MORAMORA_CONFIG）
+│   ├── game-logic.js       … 純粋ロジック層（getResult, pick, pickDifferent）
+│   └── app.js              … アプリケーション層（DOM 操作・ゲーム進行）
+├── assets/                 … 画像リソース
+│   ├── base.png            … キャラクターベース画像（常時表示）
+│   ├── expression_*.png    … 表情差分画像
+│   ├── Scissors.png        … チョキの手画像
+│   ├── Paper.png           … パーの手画像
+│   └── usa.png             … マスコット画像
+├── tests/
+│   └── game-logic.test.js  … ユニットテスト
+├── docs/
+│   └── architecture/       … 構造ドキュメント
+├── eslint.config.js        … ESLint 設定
+├── package.json            … プロジェクトメタデータ・npm scripts
+└── .prettierrc             … Prettier 設定
+```
 
 ## 設定 (`js/config.js`)
 
@@ -31,6 +54,36 @@
 2. 手ボタン（グー/チョキ/パー）をクリック。
 3. ブラックアウト →VS→ 結果表示。リザルトと手ボタンの色で勝敗を確認。
 4. 「もう一度あそぶ」で再プレイ。
+
+## 開発環境セットアップ
+
+```bash
+npm install    # 開発依存のインストール
+npx serve .    # ローカルサーバー起動（http://localhost:3000）
+```
+
+> **注意**: `npx serve .` は `serve` パッケージを使います。初回は自動でダウンロードされます。
+
+## 開発コマンド
+
+| コマンド | 内容 |
+| --- | --- |
+| `npm test` | ユニットテスト実行 |
+| `npm run lint` | ESLint によるコード検査 |
+| `npm run lint:fix` | ESLint の自動修正 |
+| `npm run format` | Prettier でフォーマット |
+| `npm run format:check` | フォーマットチェック（CI 用） |
+
+## テスト
+
+```bash
+npm test
+```
+
+- Node.js 組み込みテストランナー（`node:test`）を使用
+- `tests/` ディレクトリにテストファイルを配置
+- `js/game-logic.js` の純粋ロジック関数（`getResult`, `pick`, `pickDifferent`）をテスト
+- DOM に依存しないため、ブラウザなしで実行可能
 
 ## クレジット
 

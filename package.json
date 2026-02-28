@@ -1,0 +1,21 @@
+{
+  "name": "moramora-janken",
+  "version": "1.0.0",
+  "description": "モラモラはとこちゃんとじゃんけんで遊べる静的Webページ",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/**/*.test.js",
+    "lint": "eslint js/",
+    "lint:fix": "eslint js/ --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "globals": "^15.0.0",
+    "@eslint/js": "^9.0.0"
+  },
+  "keywords": ["janken", "game", "static-site"],
+  "license": "UNLICENSED"
+}
