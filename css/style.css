@@ -28,41 +28,26 @@ body {
   overflow-x: hidden;
 }
 
-body::before {
-  content: "";
+/* Why: SVG distortion filter must stay fixed while the image rotates.
+ * How: .bg-layer is the stationary frame that holds the filter;
+ *      .bg-image inside it carries the image and spins freely. */
+.bg-layer {
   position: fixed;
   inset: 0;
-  background:
-    radial-gradient(ellipse 800px 600px at 10% 20%, rgba(243, 110, 139, 0.4), transparent 40%),
-    radial-gradient(ellipse 700px 650px at 85% 15%, rgba(26, 183, 163, 0.35), transparent 45%),
-    radial-gradient(ellipse 750px 700px at 50% 50%, rgba(255, 200, 150, 0.3), transparent 50%),
-    radial-gradient(ellipse 650px 550px at 15% 85%, rgba(26, 183, 163, 0.4), transparent 50%),
-    radial-gradient(ellipse 700px 600px at 80% 80%, rgba(243, 110, 139, 0.3), transparent 45%),
-    radial-gradient(ellipse 600px 700px at 70% 30%, rgba(255, 180, 200, 0.35), transparent 50%),
-    radial-gradient(ellipse 750px 650px at 30% 60%, rgba(150, 220, 200, 0.3), transparent 45%),
-    radial-gradient(ellipse 700px 600px at 60% 70%, rgba(200, 180, 255, 0.25), transparent 50%);
   pointer-events: none;
   z-index: -1;
-  background-blend-mode: lighten;
-  background-size:
-    120% 120%,
-    130% 130%,
-    140% 140%,
-    110% 110%,
-    125% 125%,
-    115% 115%,
-    135% 135%,
-    120% 120%;
-  background-position:
-    0% 0%,
-    100% 100%,
-    50% 50%,
-    10% 90%,
-    90% 20%,
-    40% 30%,
-    20% 70%,
-    80% 60%;
-  animation: marble-flow 18s ease-in-out infinite;
+  overflow: hidden;
+  filter: url(#marble-distortion);
+  -webkit-filter: url(#marble-distortion);
+}
+
+.bg-image {
+  position: absolute;
+  inset: -40%;
+  background: url("../assets/base.png") center / cover no-repeat;
+  opacity: 0.45;
+  animation: bg-rotate 60s linear infinite;
+  filter: blur(2px);
 }
 
 a{
